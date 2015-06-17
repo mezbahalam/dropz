@@ -1,0 +1,13 @@
+<% unless @job.blank? %>
+  <p><strong>Title:</strong><%= @job.title %></p>
+  <p><strong>Ideal start date:</strong><%= @job.ideal_start_date %></p>
+  <p><strong>Completed on:</strong><%= @job.completed_on %></p>
+  <p><strong>Description:</strong><%= @job.description %></p>
+  <p><strong>Additional info:</strong><%= @job.additional_info %></p>
+  <p><strong>Featured:</strong><%= @job.featured %></p>
+<p><strong>Image:</strong>
+    <%= image_tag @job.job_images.first.photo.url(:thumb) unless @job.job_images.blank? %>
+  </p>  <p><strong>Customer:</strong><%= @job.user.username %></p>
+  <%= link_to 'Edit', edit_job_path(@job) %> |
+  <%= link_to 'Back', jobs_path %>
+<% end %>

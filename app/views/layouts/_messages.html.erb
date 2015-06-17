@@ -1,0 +1,15 @@
+
+
+      <% if user_signed_in? %>
+        <p> Logged in as <%= current_user.email %></p>
+      <% end %>
+
+
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div data-alert class="alert-box  <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+      <%= content_tag :div, msg %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+<% end %>

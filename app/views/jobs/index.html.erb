@@ -1,0 +1,70 @@
+
+<div class="row">
+<h1>Listing Jobs</h1>
+	
+		
+  
+    <% @jobs.each do |job| %>
+	<div class="small-12 columns content">
+
+	<div class="row">
+    <div class="medium-8 columns">
+     <h3><%= job.title %></h3>
+     </div>
+     <div class="medium-4 columns right text-right">
+      Ideal start date: <%= job.ideal_start_date %>
+		</div>
+		</div>
+		
+			<div class="row">
+
+		<div class="medium-10 columns">
+        <%= job.description %>
+		</div>
+		
+		 <div class="medium-2 columns text-right right ">
+        <%= image_tag job.job_images.first.photo.thumb.url if job.job_images.present? %>
+
+  		</div>
+		</div>
+		
+		<% if current_user && current_user.admin?  %>
+
+			<div class="row">
+	    <div class="medium-4 columns text-right right">
+        <%= job.user.username unless job.user.blank? %>
+          </div>
+       </div>
+           <% end %>
+
+<br /> 
+		<div class="row">
+	   <div class="large-2 columns">
+        <%= link_to 'Show', job %>
+        				</div>
+	  <div class="large-2 columns">
+          <%= link_to 'Edit', edit_job_path(job) if can? :update, job %>
+        				</div>
+
+        	   <div class="large-2 columns">
+          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, job %>
+        				</div>
+
+        	   <div class="large-2 columns">
+          <%= link_to 'Add Images', new_job_job_image_path(job) if can? :add_image, job %>
+        
+     				</div>
+
+
+
+<div class="large-2 columns">
+<%= link_to 'New job', new_job_path if can? :create, Job %>
+			</div> 
+
+     			</div>
+
+
+ </div>
+    <% end %>
+
+</div>

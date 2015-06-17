@@ -1,0 +1,19 @@
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: myapp_development
+  pool: 5
+  username: theboss
+  password: 
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: fixittesttt
+  pool: 5
+  username: theboss
+  password: 
+  
+  
+  

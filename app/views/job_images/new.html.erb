@@ -1,0 +1,4 @@
+<%= form_for([@job, @job_image], :html => { :multipart => true, :id => "image_upload_form", :class => "dropzone" })  do |f| %>
+  <%= f.hidden_field :job_id %>
+  <div class="dropzone-previews"></div>
+<% end %>

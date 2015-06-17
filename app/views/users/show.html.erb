@@ -1,0 +1,63 @@
+<p>
+  <strong>Email:
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Joined on:</strong>
+  <%= @joined_on %>
+</p>
+<p>
+  <strong>Last logged in on:</strong>
+  <%= @last_login %>
+</p>
+<p>
+  <strong>No. times logged in:</strong>
+  <%= @user.sign_in_count %>
+</p>
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Phone2:</strong>
+  <%= @user.phone2 %>
+</p>
+
+<p>
+  <strong>Address line1:</strong>
+  <%= @user.address_line1 %>
+</p>
+
+<p>
+  <strong>Address line2:</strong>
+  <%= @user.address_line2 %>
+</p>
+
+<p>
+  <strong>Post town:</strong>
+  <%= @user.post_town %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role.name %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

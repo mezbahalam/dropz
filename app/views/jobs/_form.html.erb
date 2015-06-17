@@ -1,0 +1,51 @@
+<%= form_for @job, :html => {:multipart => true} do |f| %>
+
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :ideal_start_date %><br>
+    <%= f.date_select :ideal_start_date %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :additional_info %><br>
+    <%= f.text_area :additional_info %>
+  </div>
+  <br>
+  <hr>
+  <br>
+
+  <% unless user_signed_in? %>
+    <% if @new_with_user == "sign_in" %>
+      <%= fields_for @job.user do |builder| %>
+        <%= render "sign_in_with_job", f: builder %>
+      <% end %>
+    <% elsif @new_with_user == "sign_up" %>
+      <%= fields_for @job.user do |builder| %>
+        <%= render "sign_up_with_job", f: builder %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
